@@ -1,42 +1,29 @@
 <?php
-//Déclaration de ma variable d'affichage
-$listeUtilisateur = '';
+//ROUTEUR
+//import des ressources
+include('./env.php');
+include('./utils/utils.php');
+include('./model/modelUser.php');
+include('./model/modelArticle.php');
+include('./controller/controllerUsers.php');
+include('./controller/controllerArticle.php');
 
-//AFFICHER LES UTILISATEURS : pseudo, email, role
-//1. Connexion à la BDD avec l'objet PDO
-$bdd = new PDO('mysql:host=127.0.0.1:3306;dbname=mvc','root','root',[
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-]);
+//1. Récupérer l'url demandé par l'utilisateur
+$url = parse_url($_SERVER['REQUEST_URI']);
 
-//2. Préparer une requête pour SELECT les utilisateurs
-$req = $bdd->prepare('SELECT pseudo, email, role FROM user INNER JOIN role ON role.id = user.role_id');
+//2. Récupérer le path de l'url : ceux qui vient après le nom de domaine
+$path = isset($url['path']) ? $url['path'] : '/';
 
-$req->execute();
-
-$data = $req->fetchAll(PDO::FETCH_ASSOC);
-
-//3. Traiter les données pour ensuite les afficher
-foreach($data as $row){
-    $listeUtilisateur .="<li>Pseudo :".$row['pseudo']." - Email : ".$row['email']." - Role :".$row['role']."</li>";
+//3. Appeler le Controller lié à la route demandée
+switch ($path) {
+    case '/':
+    case $_ENV['utilisateurs']:
+        displayUsers();
+        break;
+    case $_ENV['articles'] :
+        displayArticles();
+        break;
+    default:
+        echo "erreur 404";
+        break;
 }
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <header></header>
-    <main>
-        <h1>Liste des utilisateurs</h1>
-        <ul>
-            <?php echo $listeUtilisateur ?>
-        </ul>
-    </main>
-    <footer></footer>
-</body>
-</html>
