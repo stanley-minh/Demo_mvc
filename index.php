@@ -18,7 +18,8 @@ $path = isset($url['path']) ? $url['path'] : '/';
 switch ($path) {
     case '/':
     case $_ENV['utilisateurs']:
-        displayUsers();
+        $controller = new ControllerUser(new ModelUser(connect()));
+        $controller->render();
         break;
     case $_ENV['articles'] :
         displayArticles();
