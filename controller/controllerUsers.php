@@ -2,9 +2,11 @@
 //CONTROLLER
 
 function displayUsers(){
-    
+    //Creation d'un objet ModelUser
+    $modelUser = new ModelUser(connect());
+
     //Appel du model pour récupération des données
-    $data = getUser();
+    $data = $modelUser->findAll();
 
     //Appel de la view pour effectuer l'affichage
     $title = "Mes Utilisateurs";

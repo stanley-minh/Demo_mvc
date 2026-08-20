@@ -16,6 +16,3 @@ $listeUtilisateur = '';
             ?>
         </ul>
     </main>
-    <footer></footer>
-</body>
-</html>
