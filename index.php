@@ -5,6 +5,8 @@ include('./env.php');
 include('./utils/utils.php');
 include('./model/modelUser.php');
 include('./model/modelArticle.php');
+include('./view/viewFooter.php');
+include('./view/viewUser.php');
 include('./controller/controllerUsers.php');
 include('./controller/controllerArticle.php');
 
@@ -18,7 +20,7 @@ $path = isset($url['path']) ? $url['path'] : '/';
 switch ($path) {
     case '/':
     case $_ENV['utilisateurs']:
-        $controller = new ControllerUser(new ModelUser(connect()));
+        $controller = new ControllerUser(new ModelUser(connect()), new ViewUser());
         $controller->render();
         break;
     case $_ENV['articles'] :

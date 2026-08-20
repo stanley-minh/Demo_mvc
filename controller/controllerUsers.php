@@ -7,8 +7,9 @@ class ControllerUser{
     private ?string $titre;
 
     //CONSTRUCTEUR
-    public function __construct(ModelUser $model){
+    public function __construct(ModelUser $model, ViewUser $view){
         $this->modelUser = $model;
+        $this->viewUser = $view;
     }
 
     //GETTER ET SETTER
@@ -66,10 +67,12 @@ class ControllerUser{
         //Appel du model pour récupération des données
         $data = $this->modelUser->findAll();
 
+        //2. Fournir les datas à la viewUser
+        $this->viewUser->setDataUsers($data);
+
         //Appel de la view pour effectuer l'affichage
         $title = "Mes Utilisateurs";
         include('./view/viewHeader.php');
-        include('./view/viewUser.php');
-        include('./view/viewFooter.php');
+        $this->viewUser->displayAll();
     }
 }
