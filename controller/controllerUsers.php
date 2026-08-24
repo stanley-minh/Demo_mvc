@@ -72,7 +72,6 @@ class ControllerUser{
 
         //Appel de la view pour effectuer l'affichage
         $title = "Mes Utilisateurs";
-        include('./view/viewHeader.php');
         $this->viewUser->displayAll();
     }
 }

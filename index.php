@@ -6,6 +6,7 @@ include('./utils/utils.php');
 include('./model/modelUser.php');
 include('./model/modelArticle.php');
 include('./view/viewFooter.php');
+include('./view/viewHeader.php');
 include('./view/viewUser.php');
 include('./controller/controllerUsers.php');
 include('./controller/controllerArticle.php');

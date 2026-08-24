@@ -4,6 +4,7 @@ class ViewUser{
     private string $listUsers = '';
     private ?array $dataUsers;
     private ViewFooter $viewFooter;
+    private ViewHeader $viewHeader;
 
     //CONSTRUCTEUR
 
@@ -11,6 +12,7 @@ class ViewUser{
     public function setDataUsers(array $newData){
         $this->dataUsers = $newData;
         $this->viewFooter = new ViewFooter();
+        $this->viewHeader = new ViewHeader("Utilisateurs");
     }
 
     //METHODS
@@ -28,6 +30,7 @@ class ViewUser{
     }
 
     public function displayAll():void{
+        $this->viewHeader->display();
         $this->display();
         $this->viewFooter->display();
     }
