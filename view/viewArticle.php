@@ -39,7 +39,7 @@ class ViewArticle{
     public function displayAll():void{
         $this->viewHeader->display();
         $this->display();
-        $this->viewFooter->display();
+        $this->viewFooter->launchBuffer()->display();
     }
 
 }
