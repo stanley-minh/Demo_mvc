@@ -12,7 +12,7 @@ class ViewUser{
     public function setDataUsers(array $newData){
         $this->dataUsers = $newData;
         $this->viewFooter = new ViewFooter();
-        $this->viewHeader = new ViewHeader("Utilisateurs");
+        $this->viewHeader = new ViewHeader("Utilisateurs","./public/src/script/scriptUser.js");
     }
 
     //METHODS
