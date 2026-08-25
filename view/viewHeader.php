@@ -4,6 +4,7 @@ class ViewHeader{
     //ATTRIBUTS
     private ?string $title;
     private ?string $linkScript;
+    private ?string $buffer;
 
     //CONSTRUCTOR
     public function __construct(?string $title = "Mon Super Site", ?string $linkScript = ''){
@@ -14,24 +15,35 @@ class ViewHeader{
     //GETTER ET SETTER
 
     //METHOD
-    public function display(){
-        echo '<!DOCTYPE html>
+    //Méthode pour mettre en mémoire tampon un template HTML
+    public function launchBuffer():self{
+        ob_start();
+?>
+        <!DOCTYPE html>
             <html lang="fr">
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>'.$this->title.'</title>
+                <title> <?php echo $this->title ?></title>
                 <link rel="stylesheet" href="./public/src/css/style.css">
-                <script src="'. $this->linkScript .'" defer></script>
+                <script src=" <?php echo $this->linkScript ?>" defer></script>
             </head>
             <body>
                 <header>
                     <nav>
-                        <a href='.$_ENV['utilisateurs'].'>Utilisateurs</a>
-                        <a href='.$_ENV['articles'].'>Articles</a>
+                        <a href=<?php echo $_ENV['utilisateurs'] ?> >Utilisateurs</a>
+                        <a href=<?php echo $_ENV['articles'] ?> >Articles</a>
                     </nav>
-                </header>';
-                }
-            }
+                </header>
+<?php
+        $this->buffer = ob_get_clean();
+        return $this;
+    }
+
+    //Method pour afficher le contenu de la mémoire tampon
+    public function display():void{
+        echo $this->buffer;
+    }
+}
 
 ?>
