@@ -1,4 +1,6 @@
 <?php
+namespace View;
+
 class ViewFooter{
     //ATTRIBUT
     private ?string $buffer;

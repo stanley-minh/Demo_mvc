@@ -1,4 +1,9 @@
 <?php
+namespace Controller;
+
+use Model\ModelArticle;
+use View\ViewArticle;
+
 class ControllerArticle{
     //ATTRIBUTS
     private ModelArticle $modelArticle;

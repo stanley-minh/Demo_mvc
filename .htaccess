@@ -2,7 +2,7 @@
 RewriteEngine On
 
 #base du projet (emplacement à partir de la racine du serveur)
-RewriteBase /D_MVC/
+RewriteBase /MVC/
 
 #si ce n'est pas un répertoire
 RewriteCond %{REQUEST_FILENAME} !-d
