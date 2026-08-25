@@ -3,10 +3,10 @@
         "psr-4": {
             "Controller\\": "Controller/",
             "Model\\": "Model/",
-            "View\\": "View/"
+            "View\\": "View/",
+            "Utils\\" : "utils/"
         },
         "files": [
-            "utils/utils.php",
             "env.php"
         ]
     }

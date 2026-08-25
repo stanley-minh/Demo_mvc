@@ -43,6 +43,7 @@ use Model\ModelUser;
 use Model\ModelArticle;
 use View\ViewUser;
 use View\ViewArticle;
+use Utils\Utils;
 
 //1. Récupérer l'url demandé par l'utilisateur
 $url = parse_url($_SERVER['REQUEST_URI']);
@@ -55,11 +56,11 @@ switch ($path) {
     case '/':
     case $_ENV['utilisateurs']:
         // utilisation de l'alias pour le Controller\ControllerUser
-        $controller = new MonUser(new ModelUser(connect()), new ViewUser());
+        $controller = new MonUser(new ModelUser(Utils::connect()), new ViewUser());
         $controller->render();
         break;
     case $_ENV['articles'] :
-        $controller = new ControllerArticle(new ModelArticle(connect()), new ViewArticle());
+        $controller = new ControllerArticle(new ModelArticle(Utils::connect()), new ViewArticle());
         $controller->render();
         break;
     default:
