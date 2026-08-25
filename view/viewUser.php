@@ -1,4 +1,6 @@
 <?php
+namespace View;
+
 class ViewUser{
     //ATTRIBUT
     //private string $listUsers = '';

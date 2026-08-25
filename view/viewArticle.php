@@ -1,4 +1,6 @@
 <?php
+namespace View;
+
 class ViewArticle{
     //ATTRIBUT
     private string $listArticles = '';

@@ -1,4 +1,6 @@
 <?php
+namespace View;
+
 //Class ViewHeader
 class ViewHeader{
     //ATTRIBUTS

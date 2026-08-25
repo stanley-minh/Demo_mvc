@@ -1,4 +1,8 @@
 <?php
+namespace Model;
+
+use PDO;
+
 class ModelArticle{
     //ATTRIBUT
     private ?int $id;

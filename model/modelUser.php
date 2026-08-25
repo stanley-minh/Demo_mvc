@@ -1,5 +1,10 @@
 <?php
 //Class ModelUser
+namespace Model;
+
+//ici use PDO permet d'éviter au fichier d'aller chercher la class PDO dans l'espace de nom Model
+use PDO;
+
 class ModelUser{
     //ATTRIBUTS
     //les attributs d'un model doivent correspondrent aux champs de la table correspondante en BDD
