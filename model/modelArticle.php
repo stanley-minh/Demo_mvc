@@ -3,7 +3,7 @@ namespace Model;
 
 use PDO;
 
-class ModelArticle extends Model {
+class ModelArticle{
     //ATTRIBUT
     private ?int $id;
     private ?string $title;
@@ -11,8 +11,12 @@ class ModelArticle extends Model {
     private ?string $createdAt;
     private ?string $editedAt;
     private ?string $author;
+    private PDO $bdd;
 
     //CONSTRUCTEUR
+    public function __construct(PDO $bdd){
+        $this->bdd = $bdd;
+    }
 
     //GETTER ET SETTER
 
@@ -22,7 +26,7 @@ class ModelArticle extends Model {
             //1. Preparer la requête
             $request = 'SELECT a.id, a.title, a.content, a.created_at, a.edited_at, u.pseudo FROM article a INNER JOIN user u ON u.id = a.user_id';
 
-            $req = $this->getBDD()->prepare($request);
+            $req = $this->bdd->prepare($request);
 
             //2. Exécution de la requête
             $req->execute();
