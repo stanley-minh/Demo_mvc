@@ -22,7 +22,6 @@ $url = parse_url($_SERVER['REQUEST_URI']);
 
 //2. Récupérer le path de l'url : ceux qui vient après le nom de domaine
 $path = isset($url['path']) ? $url['path'] : '/';
-
 //3. Appeler le Controller lié à la route demandée
 switch ($path) {
     case '/':
@@ -35,6 +34,14 @@ switch ($path) {
         $controller = new ControllerArticle(new ModelArticle(Utils::connect()), new ViewArticle("Articles","./public/src/script/scriptArticle.js"));
         $controller->render();
         break;
+        case $_ENV['login']:
+    $controller = new MonUser(new ModelUser(Utils::connect()), new ViewUser("Connexion","./public/src/script/scriptUser.js"));
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->login();
+    } else {
+        $controller->renderLogin();
+    }
+    break;
     default:
         echo "erreur 404";
         break;

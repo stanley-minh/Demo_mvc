@@ -15,7 +15,12 @@ class Controller{
     }
 
     //GETTER ET SETTER
-
+public function getModel(): Model{
+        return $this->model;
+    }
+      public function getView(): Object{
+        return $this->view;
+    }
     //METHODS
     public function render():void{
         //1. Appel du model pour récupérer les données des articles
